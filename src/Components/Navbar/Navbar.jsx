@@ -23,14 +23,20 @@ const Navbar = () => {
     // if (activeLink !== null) {
     //     linkStyle.color = 'orange'; // change color when active
     // }
-
+    const font = {
+        fontFamily: 'Changa, sans - serif,Comic Neue, cursive,Exo 2, sans - serif',
+    }
     const navbar = <>
-        <li className='text-xl  font-bold '><Link to='/'>Home</Link></li>
+        <li className='text-xl font-bold ' style={{ font }}><Link to='/'>Home</Link></li>
 
-        <li className='text-xl font-bold ' ><Link to='/allToys'>All Toys</Link></li>
-        <li className='text-xl font-bold ' ><Link to='/myToys'>My Toys</Link></li>
-        <li className='text-xl font-bold '><Link to='/addAToy'>Add A Toys</Link></li>
-        <li className='text-xl font-bold '><Link to='/blogs'>Blog</Link></li>
+        <li className='text-xl font-bold ' style={{ font }}><Link to='/allToys'>All Toys</Link></li>
+        {
+            user && <div className='flex space-x-8'>
+                <li className='text-xl font-bold ' style={{ font }}><Link to='/myToys'>My Toys</Link></li>
+                <li className='text-xl font-bold ' style={{ font }}><Link to='/addAToy'>Add A Toys</Link></li>
+            </div>
+        }
+        <li className='text-xl font-bold ' style={{ font }}><Link to='/blogs'>Blog</Link></li>
 
 
     </>
@@ -61,7 +67,7 @@ const Navbar = () => {
                 <div className='navbar-end' >
                     {
                         user?.email ? <>
-                            <button onClick={handleLogOut} className='border px-5 text-xl font-bold border-gray-800 mr-5 py-2'>Sign Out</button>  <img className="h-[50px] w-[50px] ml-3 rounded-full" onMouseMove={user.displayName} src={user.photoURL} alt="" />
+                            <button onClick={handleLogOut} className='border px-5 text-xl font-bold border-gray-800 lg:mr-5 py-2'>Sign Out</button><img className="h-[50px] w-[50px] ml-3 rounded-full" onMouseMove={user.displayName} src={user.photoURL} alt="" />
 
                         </> : <Link to="/login" className="border px-5 text-xl font-bold border-gray-800 mr-5 py-2">Log In</Link >
                     }

@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import { ImGoogle, } from "react-icons/im";
 import login from "../../assets/icon/login.png"
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import GoogleLogin from "../GoogleLogin/GoogleLogin";
 
 
 
@@ -48,38 +48,6 @@ const Login = () => {
 
     }
 
-    const handleGoogleSignIn = () => {
-        signInWithGoogle()
-            .then(result => {
-                const loggedUser = result.user;
-                const saveUser = { name: loggedUser.displayName, email: loggedUser.email }
-                fetch('localhost:5000/users', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(saveUser)
-                })
-                    .then(res => res.json())
-                    .then((data) => {
-                        if (data.insertedId) {
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: 'User sign up successfully',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                            navigate(from, { replace: true });
-                        }
-
-                    })
-
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
 
     return (
         <div className="hero min-h-screen container mx-auto">
@@ -88,37 +56,35 @@ const Login = () => {
                 <div className="text-center lg:text-left w-2/4">
                     <img className=" image-full lg:w-full" src={login} alt="" />
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 ">
-                    <form onSubmit={handleLogin}>
-                        <div className="card-body ">
-                            <h1 className="text-3xl font-bold text-center">Login now!</h1>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <input type="email" name="email" placeholder="email" className="input input-bordered" />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <input type="password" name="password" placeholder="password" className="input input-bordered" />
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
-                            </div>
-                            <div className="form-control mt-6">
-                                <button className="btn btn-sm bg-orange-300 border-none">Login</button>
-                            </div>
-
+                <div className="card flex-shrink-0 shadow-2xl bg-base-100 ">
+                    <form onSubmit={handleLogin} className="card-body lg:w-[500px]">
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Email</span>
+                            </label>
+                            <input type="text" placeholder="email" name='email' className="input input-bordered" />
                         </div>
-                    </form>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Password</span>
+                            </label>
+                            <input type="text" placeholder="type the captcha" name='password' className="input input-bordered" />
+                            <label className="label">
+                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                            </label>
+                        </div>
 
-                    <div className=" ml-20">
-                        <button onClick={handleGoogleSignIn} className='btn btn-outline mt-3 w-full '><span className='mr-3'><ImGoogle></ImGoogle></span>Log in with Google</button>
-                        <p>New in this page? <Link to="/signUp" className=" text-teal-800" >Please SignUp.</Link></p>
+                        <div className="form-control mt-6">
+
+                            <button className='btn rounded-3xl bg-[#D1A054]' type="submit">Login</button>
+                        </div>
+                        <Link to='/signUp'><p>New in this site? Please SignUp</p></Link>
+                    </form>
+                    <div className=' mx-auto mb-6'>
+                        <GoogleLogin ></GoogleLogin>
                     </div>
                 </div>
+
             </div>
         </div>
     );
