@@ -9,6 +9,7 @@ import { ImGoogle } from "react-icons/im";
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
+import { Helmet } from "react-helmet-async";
 
 
 const SignUp = () => {
@@ -17,7 +18,7 @@ const SignUp = () => {
 
     const from = location.state?.form?.pathname || "/"
 
-    const { createUser, signInWithGoogle,updateUserProfile } = useContext(AuthContext);
+    const { createUser, signInWithGoogle, updateUserProfile } = useContext(AuthContext);
 
     const handleSignUp = (event) => {
         event.preventDefault()
@@ -32,7 +33,7 @@ const SignUp = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                fetch('http://localhost:5000/users', {
+                fetch('https://byte-brains-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -66,10 +67,14 @@ const SignUp = () => {
 
     }
 
-   
+
 
     return (
         <div className="hero min-h-screen container mx-auto">
+            <Helmet>
+                <title>Sign Up | ByteBrains</title>
+
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row h-full w-full">
                 <div className="text-center lg:text-left w-2/4">
 

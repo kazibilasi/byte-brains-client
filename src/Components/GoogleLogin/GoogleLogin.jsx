@@ -14,7 +14,7 @@ const GoogleLogin = () => {
                 const loggedUser = result.user
                 console.log(loggedUser)
                 const savedUser = { user: loggedUser.displayName, email: loggedUser.email }
-                fetch('http://localhost:5000/users', {
+                fetch('https://byte-brains-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

@@ -1,29 +1,34 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import PopularItem from '../../PopularItem/PopularItem';
 
 const PopularProducts = () => {
     const [popularToy1, setPopularToy1] = useState([])
     const [popularToy2, setPopularToy2] = useState([])
     const [popularToy3, setPopularToy3] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/allToys')
+        fetch('https://byte-brains-server.vercel.app/allToys')
             .then(res => res.json())
             .then(data => {
                 const toy1 = data.filter(item => item.subcategory === 'Building Blocks')
                 const toy2 = data.filter(item => item.subcategory === 'Plush Toys')
                 const toy3 = data.filter(item => item.subcategory === 'Outdoor Exploration')
-                console.log(toy1)
+
                 setPopularToy1(toy1.slice(0, 3))
                 setPopularToy2(toy2.slice(0, 3))
                 setPopularToy3(toy3.slice(0, 3))
             })
     }, [])
 
+
+   
+
     return (
-        <div className=' container mx-auto mt-10 mb-10'>
-            <p className='text-center font-bold text-5xl mb-10 mt-5'>Popular Category</p>
+        <div className=' container mx-auto mt-10 mb-10 '>
+            <p className='text-center font-medium text-5xl mb-10 mt-5'>Popular Category</p>
             <Tabs>
 
                 <TabList>
@@ -33,35 +38,23 @@ const PopularProducts = () => {
                 </TabList>
 
                 <TabPanel>
-                    <div className='lg:flex justify-center items-center lg:space-x-28 p-8'>
+                    <div className='grid lg:grid-cols-3 md:grid-cols-2  p-8'>
                         {
-                            popularToy1.map(item => <div key={item._id}>
-                                <img className='w-[400px]' src={item.toyImage} alt="" />
-                                <p className=' mt-5 text-xl font-extrabold'>{item.toyName}</p>
-                                <p className=' mt-3 font-extrabold'>$ {item.price}</p>
-                            </div>)
+                            popularToy1.map(item => <PopularItem key={item._id} item={item}></PopularItem>)
                         }
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='lg:flex justify-center items-center lg:space-x-28 p-8'>
+                    <div className='grid lg:grid-cols-3 md:grid-cols-2  p-8 '>
                         {
-                            popularToy2.map(item => <div key={item._id}>
-                                <img className='w-[400px]' src={item.toyImage} alt="" />
-                                <p className=' mt-5 text-xl font-extrabold'>{item.toyName}</p>
-                                <p className=' mt-3 font-extrabold'>$ {item.price}</p>
-                            </div>)
+                            popularToy2.map(item =>  <PopularItem key={item._id} item={item}></PopularItem>)
                         }
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='lg:flex justify-center items-center lg:space-x-28 p-8'>
+                    <div className='grid lg:grid-cols-3 md:grid-cols-2 p-8 '>
                         {
-                            popularToy3.map(item => <div key={item._id}>
-                                <img className='w-[400px]' src={item.toyImage} alt="" />
-                                <p className=' mt-5 text-xl font-extrabold'>{item.toyName}</p>
-                                <p className=' mt-3 font-extrabold'>$ {item.price}</p>
-                            </div>)
+                            popularToy3.map(item =>  <PopularItem key={item._id} item={item}></PopularItem>)
                         }
                     </div>
                 </TabPanel>

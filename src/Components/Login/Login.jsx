@@ -5,6 +5,7 @@ import login from "../../assets/icon/login.png"
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -51,6 +52,11 @@ const Login = () => {
 
     return (
         <div className="hero min-h-screen container mx-auto">
+            <Helmet
+            >
+                <title>login | ByteBrains</title>
+
+            </Helmet>
 
             <div className="hero-content flex-col lg:flex-row h-full w-full">
                 <div className="text-center lg:text-left w-2/4">

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Navbar = () => {
@@ -10,33 +10,24 @@ const Navbar = () => {
             .then(() => { })
             .then(error => console.log(error))
     }
-    // const [activeLink, setActiveLink] = useState(null);
 
-    // const handleLinkClick = (index) => {
-    //     setActiveLink(index);
-    // };
-
-    // const linkStyle = {
-    //     color: 'black', // default color
-    // };
-
-    // if (activeLink !== null) {
-    //     linkStyle.color = 'orange'; // change color when active
-    // }
-    const font = {
-        fontFamily: 'Changa, sans - serif,Comic Neue, cursive,Exo 2, sans - serif',
-    }
+ 
     const navbar = <>
-        <li className='text-xl font-bold ' style={{ font }}><Link to='/'>Home</Link></li>
+        <li style={{ color: location.pathname === '/' ? '#FFD700' : 'black' }}>
+            <Link to='/'>HOME</Link>
+        </li>
 
-        <li className='text-xl font-bold ' style={{ font }}><Link to='/allToys'>All Toys</Link></li>
+        <li style={{ color: location.pathname === '/allToys' ? '#FFD700' : 'black' }}>
+            <Link to='/allToys'>ALL TOYS</Link>
+        </li>
         {
             user && <div className='flex space-x-8'>
-                <li className='text-xl font-bold ' style={{ font }}><Link to='/myToys'>My Toys</Link></li>
-                <li className='text-xl font-bold ' style={{ font }}><Link to='/addAToy'>Add A Toys</Link></li>
+
+                <li style={{ color: location.pathname === '/addAToy' ? '#FFD700' : 'black' }} ><Link to='/addAToy'>ADD TOY</Link></li>
+                <li  style={{ color: location.pathname === '/myToys' ? '#FFD700' : 'black' }}><Link to='/myToys'>MY TOYS</Link></li>
             </div>
         }
-        <li className='text-xl font-bold ' style={{ font }}><Link to='/blogs'>Blog</Link></li>
+        <li style={{ color: location.pathname === '/blogs' ? '#FFD700' : 'black' }}><Link to='/blogs'>BLOG</Link></li>
 
 
     </>
@@ -67,13 +58,13 @@ const Navbar = () => {
                 <div className='navbar-end' >
                     {
                         user?.email ? <>
-                            <button onClick={handleLogOut} className='border px-5 text-xl font-bold border-gray-800 lg:mr-5 py-2'>Sign Out</button><img className="h-[50px] w-[50px] ml-3 rounded-full" onMouseMove={user.displayName} src={user.photoURL} alt="" />
+                            <button onClick={handleLogOut} className='border lg:px-5 md:px-5 text-xl font-medium border-gray-800 lg:mr-5 py-2'>Sign Out</button><img className="h-[50px] w-[50px] ml-3 rounded-full" onMouseMove={user.displayName} src={user.photoURL} alt="" />
 
-                        </> : <Link to="/login" className="border px-5 text-xl font-bold border-gray-800 mr-5 py-2">Log In</Link >
+                        </> : <Link to="/login" className="border lg:px-5 md:px-5 text-xl font-medium border-gray-800 mr-5 py-2">Log In</Link >
                     }
                 </div>
                 {/* <div className="navbar-end">
-                    <Link to='/login'><p className=" border px-5 text-xl font-bold border-gray-800 mr-5 py-2">login</p></Link>
+                    <Link to='/login'><p className=" border px-5 text-xl font-medium border-gray-800 mr-5 py-2">login</p></Link>
                 </div> */}
             </div>
         </div>

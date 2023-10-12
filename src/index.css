@@ -3,5 +3,41 @@
 @tailwind utilities;
 
 body{
+    font-family: 'Changa', sans-serif;
     font-family: 'Comic Neue', cursive;
+    font-family: 'Exo 2', sans-serif;
+    font-family: 'Inconsolata', monospace;
 }
+.custom-ellipsis {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Set the number of lines before truncation */
+    -webkit-line-clamp: 3; /* Adjust this value based on your needs */
+  }
+  
+  .container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .image {
+    width: 300px; /* Set your desired width */
+    height: 200px; /* Set your desired height */
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .add-to-cart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .container:hover .add-to-cart {
+    opacity: 1;
+  }
+  

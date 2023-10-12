@@ -15,6 +15,16 @@ import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import Login from "./Components/Login/Login";
 import AuthProvider from "./components/AuthProvider/AuthProvider";
 import SignUp from "./Components/SignUp/SignUp";
+import ViewDetails from "./Components/ViewDetails/ViewDetails";
+import { HelmetProvider } from "react-helmet-async";
+
+import {
+
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+const queryClient = new QueryClient()
 
 
 const router = createBrowserRouter([
@@ -33,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/myToys",
-        element: <MyToys></MyToys>,
+        element: <PrivateRoute><MyToys></MyToys></PrivateRoute>,
       },
       {
         path: "/addAToy",
@@ -51,14 +61,26 @@ const router = createBrowserRouter([
         path: "/signUp",
         element: <SignUp></SignUp>,
       },
+
+      {
+        path: "/viewDetails/:id",
+        element: <ViewDetails></ViewDetails>,
+        loader: ({ params }) => fetch(`https://byte-brains-server.vercel.app/allToys/${params.id}`)
+      },
     ]
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
+   <AuthProvider>
+      <HelmetProvider>
+        <QueryClientProvider client={queryClient}>
+          <div className=' max-w-screen-xl mx-auto'>
+            <RouterProvider router={router} />
+          </div>
+        </QueryClientProvider>
+      </HelmetProvider>
     </AuthProvider>
   </React.StrictMode>,
 )
