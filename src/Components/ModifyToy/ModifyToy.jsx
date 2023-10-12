@@ -183,7 +183,7 @@ const ModifyToy = ({ item, handleDeleteMyToys, }) => {
                         <div className="modal-action mr-6 mb-6">
                             <form method="dialog mr-6 mb-6">
                                 {/* if there is a button in form, it will close the modal */}
-                                <button type='button' className="btn">Close</button>
+                                <button type='button' onClick={() => document.getElementById('my_modal_5').close()} className="btn">Close</button>
                             </form>
                         </div>
                     </div>
