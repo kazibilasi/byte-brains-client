@@ -6,14 +6,13 @@ import {
 } from "react-router-dom";
 import "./index.css";
 
-import Home from "./components/Home/Home";
+
 import AllToys from "./Components/AllToys/AllToys";
 import MyToys from "./Components/MyToys/MyToys";
 import AddAToys from "./Components/AddAToys/AddAToys";
 import Blogs from "./Components/Blogs/Blogs";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import Login from "./Components/Login/Login";
-import AuthProvider from "./components/AuthProvider/AuthProvider";
 import SignUp from "./Components/SignUp/SignUp";
 import ViewDetails from "./Components/ViewDetails/ViewDetails";
 import { HelmetProvider } from "react-helmet-async";
@@ -24,19 +23,21 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
-import Main from "./components/Main/Main";
+import Home from "./Components/Home/Home";
+import AuthProvider from "./Components/AuthProvider/AuthProvider";
+import Head from "./Components/Head/Head";
 const queryClient = new QueryClient()
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main></Main>,
+    element:<Head></Head> ,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element:<Home></Home>,
       },
       {
         path: "/allToys",
