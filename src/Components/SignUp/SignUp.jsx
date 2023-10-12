@@ -75,7 +75,7 @@ const SignUp = () => {
                 <title>Sign Up | ByteBrains</title>
 
             </Helmet>
-            <div className="hero-content flex-col lg:flex-row h-full w-full">
+            <div className="hero-content flex-col lg:flex-row h-full p-8 lg:mt-[8%]">
                 <div className="text-center lg:text-left w-2/4">
 
                     <img className=" lg:w-[1000px]" src={register} alt="" />

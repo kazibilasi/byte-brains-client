@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
-import Main from "./components/Main/Main";
+
 import Home from "./components/Home/Home";
 import AllToys from "./Components/AllToys/AllToys";
 import MyToys from "./Components/MyToys/MyToys";
@@ -24,6 +24,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import Main from "./components/Main/Main";
 const queryClient = new QueryClient()
 
 

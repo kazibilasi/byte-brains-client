@@ -51,18 +51,18 @@ const Login = () => {
 
 
     return (
-        <div className="hero min-h-screen container mx-auto">
+        <div className="hero min-h-screen container mx-auto my-auto">
             <Helmet
             >
                 <title>login | ByteBrains</title>
 
             </Helmet>
 
-            <div className="hero-content flex-col lg:flex-row h-full w-full">
+            <div className="hero-content flex-col lg:flex-row h-full w-full p-8 mt-10 lg:mt-[15%]">
                 <div className="text-center lg:text-left w-2/4">
                     <img className=" image-full lg:w-full" src={login} alt="" />
                 </div>
-                <div className="card flex-shrink-0 shadow-2xl bg-base-100 ">
+                <div className="card flex-shrink-0 shadow-2xl bg-base-100  ">
                     <form onSubmit={handleLogin} className="card-body lg:w-[500px]">
                         <div className="form-control">
                             <label className="label">
