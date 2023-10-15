@@ -18,7 +18,7 @@ const Blog = ({ item }) => {
             <div className='mt-4 lg:flex md:flex justify-around items-center '>
                 <p className='flex justify-center items-center gap-x-1'><LiaUserCircle className='text-2xl'></LiaUserCircle>{item.bloggerName}</p>
                 <p className='flex justify-center items-center gap-x-1'><MdOutlineDateRange className='text-2xl'></MdOutlineDateRange>{item.date}</p>
-                <p className='text-3xl mt-2'><BsPinAngle></BsPinAngle></p>
+                <p className='text-2xl mt-2'><BsPinAngle></BsPinAngle></p>
             </div>
             <p className='mt-3 custom-ellipsis lg:w-[500px] md:w-[600px] w-[300px] '>{item.article}</p>
             <button className='btn bg-yellow-500 mt-3 rounded-3xl'> Read More</button>

@@ -47,18 +47,7 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setLoading(false)
             setUser(currentUser)
-            // if (currentUser) {
-            //     axios.post('https://byte-brains-server.vercel.app/jwt', { email: currentUser?.email })
-            //         .then(data => {
-            //             setLoading(false)
-            //             localStorage.setItem('access-token', data.data.token)
-
-            //         })
-            // }
-            // else {
-            //     localStorage.removeItem('access-token')
-            // }
-            // console.log(currentUser)
+           
 
         })
         return () => {

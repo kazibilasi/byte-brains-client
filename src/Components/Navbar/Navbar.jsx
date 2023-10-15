@@ -1,9 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Navbar = () => {
+    const [showLogOut, setShowLogOut] = useState(false)
+    const handleOnclick = () => {
+        setShowLogOut(!showLogOut)
+
+    }
     const { user, logOut } = useContext(AuthContext)
     const handleLogOut = () => {
         logOut()
@@ -11,7 +16,7 @@ const Navbar = () => {
             .then(error => console.log(error))
     }
 
- 
+
     const navbar = <>
         <li style={{ color: location.pathname === '/' ? '#FFD700' : 'black' }}>
             <Link to='/'>HOME</Link>
@@ -24,7 +29,7 @@ const Navbar = () => {
             user && <div className='flex space-x-8'>
 
                 <li style={{ color: location.pathname === '/addAToy' ? '#FFD700' : 'black' }} ><Link to='/addAToy'>ADD TOY</Link></li>
-                <li  style={{ color: location.pathname === '/myToys' ? '#FFD700' : 'black' }}><Link to='/myToys'>MY TOYS</Link></li>
+                <li style={{ color: location.pathname === '/myToys' ? '#FFD700' : 'black' }}><Link to='/myToys'>MY TOYS</Link></li>
             </div>
         }
         <li style={{ color: location.pathname === '/blogs' ? '#FFD700' : 'black' }}><Link to='/blogs'>BLOG</Link></li>
@@ -55,17 +60,37 @@ const Navbar = () => {
                         {navbar}
                     </ul>
                 </div>
-                <div className='navbar-end' >
+                {/* <div className='navbar-end' >
                     {
                         user?.email ? <>
                             <button onClick={handleLogOut} className='border lg:px-5 md:px-5 text-xl font-medium border-gray-800 lg:mr-5 py-2'>Sign Out</button><img className="h-[50px] w-[50px] ml-3 rounded-full" onMouseMove={user.displayName} src={user.photoURL} alt="" />
 
                         </> : <Link to="/login" className="border lg:px-5 md:px-5 text-xl font-medium border-gray-800 mr-5 py-2">Log In</Link >
                     }
-                </div>
-                {/* <div className="navbar-end">
-                    <Link to='/login'><p className=" border px-5 text-xl font-medium border-gray-800 mr-5 py-2">login</p></Link>
                 </div> */}
+                <div className='navbar-end'>
+                    <div className="dropdown dropdown-bottom dropdown-end">
+
+                        <label tabIndex={0} className=" m-1">
+                            {
+                                user?.email ? <><img className="h-[50px] w-[50px] ml-3 rounded-full" onMouseMove={user.displayName} src={user.photoURL} alt="" /></> : <Link to="/login" className="border lg:px-5 md:px-5 text-xl font-medium border-gray-800 mr-5 px-3 ml-3 py-2">Log In</Link >
+                            }
+
+                        </label>
+                        {
+                            user && <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow rounded-box w-44">
+                                <li><button onClick={handleLogOut} className='border lg:px-5 md:px-5 text-xl font-medium border-gray-800 lg:mr-5 py-2'>Sign Out</button></li>
+
+                            </ul>
+                        }
+                    </div>
+
+                </div>
+
+
+
+
+
             </div>
         </div>
     );
