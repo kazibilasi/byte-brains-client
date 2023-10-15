@@ -50,6 +50,8 @@ const AuthProvider = ({ children }) => {
            
 
         })
+        // https://byte-brains-server.vercel.app/
+        // http://localhost:5000/
         return () => {
             return unsubscribe();
         }

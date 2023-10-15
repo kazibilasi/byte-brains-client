@@ -59,27 +59,26 @@ const ModifyToy = ({ item, handleDeleteMyToys, }) => {
     }
     console.log(item)
     return (
-        <div className="overflow-x-auto">
-            {
-                loading ? (<span className="loading loading-dots loading-lg"></span>) : (<table className="table">
-                    {/* head */}
+        <div >
+            <table className="table">
+                {/* head */}
 
-                    <tbody>
-                        {/* row 1 */}
-                        <tr className='text-base'>
-                            <td><img className='w-[100px]' src={item.toyImage} alt="image coming" /></td>
-                            <td>{item.toyName}</td>
-                            <td>{item.subcategory}</td>
-                            <td>{item.price}</td>
-                            <td><button onClick={() => document.getElementById('my_modal_5').showModal()} className='text-2xl'><GrUpdate></GrUpdate></button></td>
-                            <td><button onClick={() => handleDeleteMyToys(item._id)} className='text-4xl'><AiFillDelete></AiFillDelete></button></td>
-                        </tr>
+                <tbody>
+                    {/* row 1 */}
+                    <tr className='text-base'>
+                        <td><img className='w-[100px]' src={item.toyImage} alt="image coming" /></td>
+                        <td>{item.toyName}</td>
+                        <td>{item.subcategory}</td>
+                        <td>{item.price}</td>
+                        <td><button onClick={() => document.getElementById('my_modal_5').showModal()} className='text-2xl'><GrUpdate></GrUpdate></button></td>
+                        <td><button onClick={() => handleDeleteMyToys(item._id)} className='text-4xl'><AiFillDelete></AiFillDelete></button></td>
+                    </tr>
 
-                    </tbody>
+                </tbody>
 
 
-                </table>)
-            }
+            </table>
+
             <div>
                 <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle ">
                     <div className=" w-2/4 bg-slate-200 container mx-auto ">

@@ -147,7 +147,7 @@ const AllToys = () => {
                 </div>
             </div>
             <div className='flex justify-end mt-3 p-6'>
-                <select name='category' className="select select-bordered rounded-none w-1/5" onChange={(e) => setSort(e.target.value)}>
+                <select name='category' className="select select-bordered rounded-none lg:w-1/5" onChange={(e) => setSort(e.target.value)}>
                     <option value="" disabled selected>Sort by Price</option>
                     <option value="dcc">Low to high</option>
                     <option value="acc">High to low</option>
