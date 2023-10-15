@@ -6,7 +6,7 @@ const ViewDetails = () => {
     console.log(loader)
     return (
         <div className=' mt-10 ' >
-            {/* <img className=' mt-10 mx-auto w-[300px]' src={loader.toyImage} alt="" />
+            <img className=' mt-10 mx-auto w-[300px]' src={loader.toyImage} alt="" />
             <div className=' mt-10 text-center'>
                 <p ><span className='font-medium text-xl'>Toy Name:</span> {loader.toyName}</p>
                 <p > <span className='font-medium text-xl'>Sub Category:</span> {loader.subcategory}</p>
@@ -14,10 +14,10 @@ const ViewDetails = () => {
                 <p > <span className='font-medium text-xl'>Price:</span> ${loader.price}</p>
                 <p > <span className='font-medium text-xl'>Available Quantity:</span> {loader.availableQuantity}</p>
                 <p > <span className='font-medium text-xl'>Product Details:</span> {loader.productDetails}</p>
-            </div> */}
+            </div>
 
 
-            <div className="card card-side bg-base-100 shadow-xl">
+            {/* <div className="card card-side bg-base-100 shadow-xl">
                 <figure className='w-3/5 h-[400px]'><img className=' mt-10 mx-auto w-cover h-cover' src={loader.toyImage} alt="Movie" /></figure>
                 <div className="card-body">
                     <div className=' mt-10'>
@@ -30,7 +30,7 @@ const ViewDetails = () => {
                     </div>
                     
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

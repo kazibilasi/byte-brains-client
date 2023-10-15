@@ -60,18 +60,18 @@ const ModifyToy = ({ item, handleDeleteMyToys, }) => {
     console.log(item)
     return (
         <div >
-            <table className="table">
+            <table className="table ">
                 {/* head */}
 
-                <tbody>
+                <tbody className=''>
                     {/* row 1 */}
-                    <tr className='text-base'>
-                        <td><img className='w-[100px]' src={item.toyImage} alt="image coming" /></td>
-                        <td>{item.toyName}</td>
-                        <td>{item.subcategory}</td>
-                        <td>{item.price}</td>
-                        <td><button onClick={() => document.getElementById('my_modal_5').showModal()} className='text-2xl'><GrUpdate></GrUpdate></button></td>
-                        <td><button onClick={() => handleDeleteMyToys(item._id)} className='text-4xl'><AiFillDelete></AiFillDelete></button></td>
+                    <tr className='text-base overflow-x-auto'>
+                        <td className='px-8'><img className='lg:w-[100px] md:w-[100px] w-[70px]' src={item.toyImage} alt="image coming" /></td>
+                        <td className='px-8'>{item.toyName}</td>
+                        <td className='px-8'>{item.subcategory}</td>
+                        <td className='px-8'>{item.price}</td>
+                        <td className='px-8'><button onClick={() => document.getElementById('my_modal_5').showModal()} className='text-2xl'><GrUpdate></GrUpdate></button></td>
+                        <td className='px-8'><button onClick={() => handleDeleteMyToys(item._id)} className='text-4xl'><AiFillDelete></AiFillDelete></button></td>
                     </tr>
 
                 </tbody>

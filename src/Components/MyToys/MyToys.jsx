@@ -64,12 +64,12 @@ const MyToys = () => {
                     <thead>
                         <tr className='text-lg'>
 
-                            <th>Toy Image</th>
-                            <th>Toy Name</th>
-                            <th>Sub Category</th>
-                            <th>Price</th>
-                            <th>Update</th>
-                            <th>Delete</th>
+                            <th className='px-8'>Toy Image</th>
+                            <th className='px-8'>Toy Name</th>
+                            <th className='px-8'>Sub Category</th>
+                            <th className='px-8'>Price</th>
+                            <th className='px-8'>Update</th>
+                            <th className='px-8'>Delete</th>
                         </tr>
                     </thead>
                 </table>
