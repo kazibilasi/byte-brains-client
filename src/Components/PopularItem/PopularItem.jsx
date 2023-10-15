@@ -32,7 +32,7 @@ const PopularItem = ({ item }) => {
         }
     };
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto lg:mt-0 md:mt-0 mt-10 '>
             <img className='w-[300px]' src={toyImage} alt="" />
             <p className=' mt-5 text-xl '>{toyName}</p>
             <p className=' mt-3 '>$ {price}</p>
